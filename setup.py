@@ -21,7 +21,7 @@ setup(
         "License :: OSI Approved :: MIT License",
     ],
     install_requires=["pydantic", "aiohttp"],
-    python_requires=">=3.10",
+    python_requires=">=3.6",
     extras_require={
         "testing": ["unittest"],
     },
