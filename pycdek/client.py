@@ -104,6 +104,17 @@ class CDEK:
             uuid = str(uuid)
         return await self(endpoints.OrderInfo, uuid=uuid)
 
+    async def create_intake(self, **kwargs) -> entities.OrderInfoResponse:
+        r = entities.IntakeCreationRequest(**kwargs)
+        return await self(endpoints.IntakeRequest, r.json(exclude_none=True))
+
+    async def get_intake_info(
+        self, uuid: Union[str | UUID]
+    ) -> entities.OrderInfoResponse:
+        if isinstance(uuid, UUID):
+            uuid = str(uuid)
+        return await self(endpoints.IntakeInfo, uuid=uuid)
+    
     async def auth(self):
         return await self(endpoints.Auth, self.credentials.dict(), auth=True)
 
