@@ -277,33 +277,6 @@ class Threshold(BaseModel):
     sum: float
     vat_sum: Optional[float]
     vat_rate: Optional[int]
-
-        
-class IntakeCreationRequest(BaseModel):
-    """
-    intake_date: Дата ожидания курьера
-
-    order_uuid: Номер заказа cdek
-
-    intake_time_from: Время начала ожидания курьера
-
-    intake_time_to: Время окончания ожидания курьера
-
-    name: Имя отправителя
-
-    number: Номер телефона
-
-    address: Адрес куда принести
-    """
-
-    intake_date: Optional[str]
-    order_uuid: Optional[UUID]
-    intake_time_from: Optional[str]
-    intake_time_to: Optional[str]
-    name: Optional[constr(max_length=255)]
-    number: Optional[constr(max_length=40)]
-    address: Optional[Location]
-        
         
 class Item(BaseModel):
     """
@@ -1325,3 +1298,29 @@ def tariff_is_international(tariff: Tariff) -> bool:
         TariffCode.EXPRESS_DOOR_POST,
         TariffCode.EXPRESS_WH_POST,
     )
+
+
+class IntakeCreationRequest(BaseModel):
+    """
+    intake_date: Дата ожидания курьера
+
+    order_uuid: Номер заказа cdek
+
+    intake_time_from: Время начала ожидания курьера
+
+    intake_time_to: Время окончания ожидания курьера
+
+    name: Имя отправителя
+
+    number: Номер телефона
+
+    address: Адрес куда принести
+    """
+
+    intake_date: Optional[str]
+    order_uuid: Optional[UUID]
+    intake_time_from: Optional[str]
+    intake_time_to: Optional[str]
+    name: Optional[constr(max_length=255)]
+    number: Optional[constr(max_length=40)]
+    address: Optional[Location]
